@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>SoundAffects Archive</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <script type="text/x-handlebars">
+    <header class="pane" id="top">
+      <h1>SoundAffects Archive</h1>
+    </header>
+    <section class="pane" id="main">
+      {{outlet}}
+    </section>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="materials">
+    <section class="pane" id="master">
+      <nav>
+        {{#if isLoaded}}
+          <ul>
+            {{#each model}}
+              <li>
+                {{#linkTo material this}}{{name}}{{/linkTo}}
+              </li>
+            {{/each}}
+          </ul>
+        {{else}}
+          <h1>Loading…</h1>
+        {{/if}}
+      </nav>
+    </section>
+    <section class="pane" id="detail">
+      {{outlet}}
+    </section>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="materials/index">
+    <p><em>Pick an item from the list to see more detail.</em></p>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="material">
+    <article>
+      {{#if isLoaded}}
+        <h1>{{name}}</h1>
+
+        <dl>
+          <dt>URL</dt>
+          <dd><a {{bindAttr href=url}}>{{url}}</a></dd>
+          <dt>Album</dt>
+          <dd>{{album}}</dd>
+          <dt>Type</dt>
+          <dd>{{type}}</dd>
+          <dt>Key Stage</dt>
+          <dd>{{keyStage}}</dd>
+          <dt>Countries</dt>
+          <dd>{{countries}}</dd>
+          <dt>Subjects</dt>
+          <dd>{{subjects}}</dd>
+        </dl>
+      {{else}}
+        <h1>Loading…</h1>
+      {{/if}}
+    </article>
+  </script>
+
+  <script src="js/libs/jquery-1.9.1.js"></script>
+  <script src="js/libs/jquery.csv-0.71.min.js"></script>
+  <script src="js/libs/handlebars-1.0.0-rc.3.js"></script>
+  <script src="js/libs/ember-1.0.0-rc.3.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

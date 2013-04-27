@@ -1,0 +1,39 @@
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+header {
+  border-bottom: 1px solid #ddd;
+  background: #eee;
+}
+
+article {
+  padding: 1em;
+}
+
+.pane {
+  position: absolute;
+  overflow: auto;
+}
+
+#top {
+  top: 0; right: 0; bottom: auto; left: 0;
+  z-index: 2;
+  height: 80px;
+}
+
+#main {
+  top: 80px; right: 0; bottom: 0; left: 0;
+}
+
+#master {
+  top: 0; right: 75%; bottom: 0; left: 0;
+  border-right: 1px solid #ddd;
+
+  background: #eee;
+}
+
+#detail {
+  top: 0; right: 0; bottom: 0; left: 25%;
+}
