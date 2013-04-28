@@ -9,28 +9,33 @@
 <body>
 
   <script type="text/x-handlebars">
-    <header class="pane" id="top">
-      <h1>SoundAffects Archive</h1>
+    <header class="pane" id="header">
+      <h1>
+        {{#linkTo materials}}SoundAffects Archive{{/linkTo}}
+      </h1>
     </header>
     <section class="pane" id="main">
       {{outlet}}
     </section>
+    <footer class="pane" id="footer">
+      &copy; Copyright SoundAffects 2008&ndash;{{thisYear}}
+    </footer>
   </script>
 
   <script type="text/x-handlebars" data-template-name="materials">
     <section class="pane" id="master">
       <nav>
-        {{#if isLoaded}}
-          <ul>
-            {{#each model}}
-              <li>
-                {{#linkTo material this}}{{name}}{{/linkTo}}
-              </li>
-            {{/each}}
-          </ul>
-        {{else}}
-          <h1>Loading…</h1>
-        {{/if}}
+        <ul>
+          {{#each model}}
+            <li>
+              {{#linkTo material this}}
+                {{album}} - {{name}}
+              {{/linkTo}}
+            </li>
+          {{else}}
+            <li><span>Loading…</span></li>
+          {{/each}}
+        </ul>
       </nav>
     </section>
     <section class="pane" id="detail">
@@ -39,7 +44,9 @@
   </script>
 
   <script type="text/x-handlebars" data-template-name="materials/index">
-    <p><em>Pick an item from the list to see more detail.</em></p>
+    <article>
+      <em>Pick an item from the list to see more detail.</em>
+    </article>
   </script>
 
   <script type="text/x-handlebars" data-template-name="material">
@@ -49,7 +56,7 @@
 
         <dl>
           <dt>URL</dt>
-          <dd><a {{bindAttr href=url}}>{{url}}</a></dd>
+          <dd><a {{bindAttr href=url}}>{{unescape url}}</a></dd>
           <dt>Album</dt>
           <dd>{{album}}</dd>
           <dt>Type</dt>

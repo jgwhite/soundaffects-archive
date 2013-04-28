@@ -3,28 +3,27 @@ html, body {
   height: 100%;
 }
 
-header {
-  border-bottom: 1px solid #ddd;
-  background: #eee;
-}
-
-article {
-  padding: 1em;
-}
+/* --- Layout --- */
 
 .pane {
   position: absolute;
   overflow: auto;
+  box-sizing: border-box;
 }
 
-#top {
+#header {
   top: 0; right: 0; bottom: auto; left: 0;
   z-index: 2;
   height: 80px;
 }
 
 #main {
-  top: 80px; right: 0; bottom: 0; left: 0;
+  top: 80px; right: 0; bottom: 40px; left: 0;
+}
+
+#footer {
+  top: auto; right: 0; bottom: 0; left: 0;
+  height: 40px;
 }
 
 #master {
@@ -36,4 +35,69 @@ article {
 
 #detail {
   top: 0; right: 0; bottom: 0; left: 25%;
+}
+
+/* --- Header --- */
+
+header {
+  border-bottom: 1px solid #ddd;
+
+  background: #eee;
+}
+
+header h1 {
+  margin: 0;
+  padding: 0.618em;
+}
+
+/* --- Footer --- */
+
+footer {
+  border-top: 1px solid #ddd;
+  padding: 1em;
+
+  font-size: 0.75em;
+
+  background: #eee;
+}
+
+/* --- Article --- */
+
+article {
+  padding: 1em;
+}
+
+article h1 {
+  margin: 0;
+}
+
+/* --- Nav --- */
+
+nav {
+  font-size: 0.8em;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+
+  list-style: none outside;
+}
+
+nav li {
+  margin: 0;
+}
+nav li:nth-child(odd) { background: #fff }
+nav li:nth-child(even) { background: #eef }
+
+nav a, span {
+  display: block;
+  padding: 0.5em 1em;
+
+  text-decoration: none;
+  color: inherit;
+}
+nav a.active {
+  background: #5891dc;
+  color: white;
 }
