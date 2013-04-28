@@ -69,9 +69,13 @@ App.Store = Ember.Object.extend({
   _fetchData: function() {
     var self = this;
 
-    $.get(this.get('url')).then(function(csv) {
+    $.get(this.get('url'))
+    .done(function(csv) {
       var data = $.csv.toObjects(csv);
       data.forEach(function(datum) { self._addDatum(datum) });
+    })
+    .fail(function(error) {
+      console.error(error);
     });
   },
 
