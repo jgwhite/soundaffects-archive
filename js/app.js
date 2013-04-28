@@ -65,6 +65,7 @@ App.Store = Ember.Object.extend({
     return this._objectForId(id);
   },
 
+
   _fetchData: function() {
     var self = this;
 
@@ -77,6 +78,7 @@ App.Store = Ember.Object.extend({
   _addDatum: function(datum) {
     var object = this._objectForId(datum.id);
 
+    // TODO: Why is this necessary?
     object.setProperties({
       id: datum.id,
       name: datum.name,
