@@ -20,6 +20,18 @@ App.MaterialsRoute = Ember.Route.extend({
   }
 });
 
+// --- Controllers ---
+
+App.MaterialController = Ember.ObjectController.extend({
+  isAudio: function() {
+    return this.get('url').match(/\.mp3$/);
+  }.property('url'),
+
+  isVideo: function() {
+    return this.get('url').match(/\.mp4$/);
+  }.property('url')
+});
+
 // --- Helpers ---
 
 Ember.Handlebars.registerBoundHelper('unescape', function(string) {

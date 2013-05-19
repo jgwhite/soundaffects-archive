@@ -52,21 +52,32 @@
   <script type="text/x-handlebars" data-template-name="material">
     <article>
       {{#if isLoaded}}
-        <h1>{{name}}</h1>
+        <h1>{{album}} - {{name}}</h1>
+
+        <div class="player">
+          {{#if isVideo}}
+            <video {{bindAttr src="url"}} controls autoplay></video>
+          {{/if}}
+          {{#if isAudio}}
+            <audio {{bindAttr src="url"}} controls autoplay></audio>
+          {{/if}}
+        </div>
 
         <dl>
           <dt>URL</dt>
           <dd><a {{bindAttr href=url}}>{{unescape url}}</a></dd>
-          <dt>Album</dt>
-          <dd>{{album}}</dd>
           <dt>Type</dt>
           <dd>{{type}}</dd>
-          <dt>Key Stage</dt>
-          <dd>{{keyStage}}</dd>
+          {{#if keyStage}}
+            <dt>Key Stage</dt>
+            <dd>{{keyStage}}</dd>
+          {{/if}}
           <dt>Countries</dt>
           <dd>{{countries}}</dd>
-          <dt>Subjects</dt>
-          <dd>{{subjects}}</dd>
+          {{#if subjects}}
+            <dt>Subjects</dt>
+            <dd>{{subjects}}</dd>
+          {{/if}}
         </dl>
       {{else}}
         <h1>Loading…</h1>

@@ -108,3 +108,11 @@ nav a.active {
   background: #5891dc;
   color: white;
 }
+
+/* --- Video --- */
+
+.player video {
+  display: block;
+  margin: 0;
+  max-width: 100%;
+}
